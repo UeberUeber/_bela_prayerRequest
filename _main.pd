@@ -1,7 +1,7 @@
 #N canvas 67 27 1341 829 10;
-#X obj 32 296 samplerate~;
-#X obj 31 273 loadbang;
-#X obj 32 321 s samplerate;
+#X obj 24 357 samplerate~;
+#X obj 23 334 loadbang;
+#X obj 24 382 s samplerate;
 #N canvas 210 60 1194 614 windows 0;
 #N canvas 0 22 450 300 (subpatch) 0;
 #X array hann 441 float 1;
@@ -157,23 +157,22 @@
 #X connect 35 0 37 0;
 #X connect 40 0 28 0;
 #X connect 41 0 28 0;
-#X restore 32 346 pd windows;
-#X obj 380 723 clone master_controls 4;
-#X obj 127 272 granular_main 0;
-#X obj 22 15 granular_control 0;
+#X restore 24 407 pd windows;
+#X obj 30 756 clone master_controls 4;
+#X obj 39 87 granular_main 0;
 #X obj 256 130 tgl 15 1 master_autoplay_on_off empty master_autoplay_on_off
 17 7 0 10 -262144 -1 -1 1 1;
-#X obj 612 685 hsl 128 15 0 1 0 0 master_autoplay_speed empty master_autoplay_speed
+#X obj 48 622 hsl 128 15 0 1 0 0 master_autoplay_speed empty master_autoplay_speed
 -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 203 559 bng 15 250 50 0 master_reset_pitch empty master_reset_pitch
+#X obj 55 583 bng 15 250 50 0 master_reset_pitch empty master_reset_pitch
 17 7 0 10 -262144 -1 -1;
 #X obj 256 105 tgl 15 1 master_on_off empty master_on_off 17 7 0 10
 -262144 -1 -1 1 1;
 #X obj 545 129 vsl 15 128 0 1 0 1 master_volume empty master_volume
-0 -9 0 10 -262144 -1 -1 11000 1;
-#X obj 607 729 hsl 128 15 0 1 0 0 master_grainplay_chance empty master_grainplay_chance
+0 -9 0 10 -262144 -1 -1 10700 1;
+#X obj 43 666 hsl 128 15 0 1 0 0 master_grainplay_chance empty master_grainplay_chance
 -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 609 771 hsl 128 15 0 1 0 0 master_random_panning empty master_random_panning
+#X obj 45 708 hsl 128 15 0 1 0 0 master_random_panning empty master_random_panning
 -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 28 549 s singlegrainvolume;
 #X obj 26 500 loadbang;
@@ -181,13 +180,8 @@
 #X obj 20 472 s pd;
 #X msg 20 430 midi-properties;
 #X msg 31 450 audio-properties;
-#X obj 98 273 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 90 334 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 198 324 bela_volume 0;
-#X obj 198 389 bela_analog offset_random 2;
-#X obj 210 522 bela_analog grain_pitch 7;
-#X obj 216 488 bela_analog grain_size 6;
-#X obj 200 461 bela_analog grain_density 5;
 #N canvas 32 310 450 300 bela_digital 0;
 #X obj 71 137 r bela_digitalIn11;
 #X obj 70 210 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
@@ -207,16 +201,30 @@
 #X connect 5 0 1 0;
 #X connect 6 0 2 0;
 #X connect 7 0 8 0;
-#X restore 514 468 pd bela_digital;
-#X obj 251 178 tgl 15 1 Bela_on empty Bela_on 17 7 0 10 -262144 -1
+#X restore 197 446 pd bela_digital;
+#X obj 265 237 tgl 15 1 Bela_on empty Bela_on 17 7 0 10 -262144 -1
 -1 1 1;
-#X obj 201 413 bela_analog random_pitch 3;
-#X obj 196 361 bela_analog_calibrate autoplay_speed 1;
-#X obj 190 437 bela_analog grainplay_chance 4;
+#X obj 266 184 loadbang;
+#X msg 266 205 1;
+#X obj 196 361 bela_analog_calibrate autoplay_speed 0 1;
+#X obj 38 117 granular_main 1;
+#X obj 458 364 bela_analog_calibrate autoplay_speed 1 3;
+#X obj 198 324 bela_volume 0 0;
+#X obj 460 326 bela_volume 1 2;
+#X obj 38 146 granular_main 2;
+#X obj 720 326 bela_volume 2 4;
+#X obj 718 364 bela_analog_calibrate autoplay_speed 2 5;
+#X obj 37 178 granular_main 3;
+#X obj 988 326 bela_volume 3 6;
+#X obj 986 364 bela_analog_calibrate autoplay_speed 3 7;
+#X obj 232 62 nbx 5 14 -1e+37 1e+37 0 1 analogSpeed empty analogSpeed
+0 -8 0 10 -262144 -1 -1 23 256;
 #X connect 0 0 2 0;
 #X connect 1 0 0 0;
-#X connect 15 0 16 0;
-#X connect 16 0 14 0;
-#X connect 18 0 17 0;
-#X connect 19 0 17 0;
-#X connect 20 0 0 0;
+#X connect 14 0 15 0;
+#X connect 15 0 13 0;
+#X connect 17 0 16 0;
+#X connect 18 0 16 0;
+#X connect 19 0 0 0;
+#X connect 22 0 23 0;
+#X connect 23 0 21 0;
